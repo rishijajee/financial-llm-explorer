@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial LLMs Explorer - Comprehensive Guide 2025</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Financial Large Language Models (LLMs) Explorer</h1>
+            <p class="subtitle">Comprehensive Guide to AI Models Revolutionizing Finance in 2025</p>
+        </div>
+    </header>
+
+    <nav class="navigation">
+        <div class="container">
+            <button class="nav-btn active" data-section="overview">Overview</button>
+            <button class="nav-btn" data-section="comparison">Model Comparison</button>
+            <button class="nav-btn" data-section="usecases">Use Cases</button>
+            <button class="nav-btn" data-section="code">Code Examples</button>
+        </div>
+    </nav>
+
+    <main class="container">
+        <!-- Overview Section -->
+        <section id="overview" class="section active">
+            <h2>What are Financial LLMs?</h2>
+            <div class="info-card">
+                <p>Financial Large Language Models (FinLLMs) are specialized AI models trained on financial data to perform tasks such as sentiment analysis, risk assessment, market prediction, regulatory compliance, and financial decision-making. According to McKinsey, Generative AI could offer annual savings of up to <strong>$340 billion</strong> for the banking sector alone.</p>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>7+</h3>
+                    <p>Major Financial LLMs</p>
+                </div>
+                <div class="stat-card">
+                    <h3>$340B</h3>
+                    <p>Potential Annual Savings</p>
+                </div>
+                <div class="stat-card">
+                    <h3>50B+</h3>
+                    <p>Parameters (BloombergGPT)</p>
+                </div>
+                <div class="stat-card">
+                    <h3>52B+</h3>
+                    <p>Training Tokens (Open-FinLLMs)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison Table Section -->
+        <section id="comparison" class="section">
+            <h2>Detailed Model Comparison</h2>
+            <div class="filter-section">
+                <label for="model-filter">Filter by Model:</label>
+                <select id="model-filter">
+                    <option value="all">All Models</option>
+                    <option value="bloomberg">BloombergGPT</option>
+                    <option value="fingpt">FinGPT</option>
+                    <option value="finbert">FinBERT</option>
+                    <option value="finma">FinMA/PIXIU</option>
+                    <option value="gpt">GPT-4/GPT-5</option>
+                    <option value="claude">Claude Opus 4</option>
+                    <option value="openfinllm">Open-FinLLMs</option>
+                </select>
+            </div>
+
+            <div class="table-wrapper">
+                <table id="llm-table" class="llm-table">
+                    <thead>
+                        <tr>
+                            <th>Model Name</th>
+                            <th>Parameters</th>
+                            <th>Training Data</th>
+                            <th>Framework</th>
+                            <th>Pricing</th>
+                            <th>Access</th>
+                            <th>Best For</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-model="bloomberg">
+                            <td class="model-name">
+                                <strong>BloombergGPT</strong>
+                                <span class="badge proprietary">Proprietary</span>
+                            </td>
+                            <td>50 Billion</td>
+                            <td>363B tokens (Bloomberg) + 345B general tokens</td>
+                            <td>Custom Transformer Architecture</td>
+                            <td>
+                                <div class="pricing-info">
+                                    <strong>Training Cost:</strong> ~$3M per training<br>
+                                    <strong>Usage:</strong> Enterprise only (via Bloomberg Terminal)
+                                </div>
+                            </td>
+                            <td><span class="badge restricted">Bloomberg Clients</span></td>
+                            <td>Financial news analysis, market intelligence, regulatory documents</td>
+                            <td><button class="details-btn" data-model="bloomberg">View Details</button></td>
+                        </tr>
+                        <tr data-model="fingpt">
+                            <td class="model-name">
+                                <strong>FinGPT</strong>
+                                <span class="badge opensource">Open Source</span>
+                            </td>
+                            <td>7B - 13B (adaptable)</td>
+                            <td>Financial news, SEC filings, social media, market data</td>
+                            <td>LLaMA-based with LoRA/QLoRA fine-tuning</td>
+                            <td>
+                                <div class="pricing-info">
+                                    <strong>Training Cost:</strong> &lt;$300 per adaptation<br>
+                                    <strong>Usage:</strong> Free (open-source)
+                                </div>
+                            </td>
+                            <td><span class="badge public">Public (HuggingFace)</span></td>
+                            <td>Sentiment analysis, stock prediction, portfolio optimization</td>
+                            <td><button class="details-btn" data-model="fingpt">View Details</button></td>
+                        </tr>
+                        <tr data-model="finbert">
+                            <td class="model-name">
+                                <strong>FinBERT</strong>
+                                <span class="badge opensource">Open Source</span>
+                            </td>
+                            <td>110M (BERT-base)</td>
+                            <td>Financial news, earnings calls, analyst reports</td>
+                            <td>BERT fine-tuned on financial corpus</td>
+                            <td>
+                                <div class="pricing-info">
+                                    <strong>Training Cost:</strong> ~$50-100<br>
+                                    <strong>Usage:</strong> Free (open-source)
+                                </div>
+                            </td>
+                            <td><span class="badge public">Public (HuggingFace)</span></td>
+                            <td>Financial sentiment analysis, text classification</td>
+                            <td><button class="details-btn" data-model="finbert">View Details</button></td>
+                        </tr>
+                        <tr data-model="finma">
+                            <td class="model-name">
+                                <strong>FinMA/PIXIU</strong>
+                                <span class="badge opensource">Open Source</span>
+                            </td>
+                            <td>7B</td>
+                            <td>136K instruction samples (FIT dataset)</td>
+                            <td>LLaMA fine-tuned with Financial Instruction Tuning</td>
+                            <td>
+                                <div class="pricing-info">
+                                    <strong>Training Cost:</strong> ~$200-500<br>
+                                    <strong>Usage:</strong> Free (open-source)
+                                </div>
+                            </td>
+                            <td><span class="badge public">Public (GitHub/HuggingFace)</span></td>
+                            <td>Multi-task financial NLP, Q&A, entity recognition</td>
+                            <td><button class="details-btn" data-model="finma">View Details</button></td>
+                        </tr>
+                        <tr data-model="gpt">
+                            <td class="model-name">
+                                <strong>GPT-4/GPT-5</strong>
+                                <span class="badge commercial">Commercial</span>
+                            </td>
+                            <td>Unknown (estimated 1T+)</td>
+                            <td>General + financial data</td>
+                            <td>OpenAI Transformer Architecture</td>
+                            <td>
+                                <div class="pricing-info">
+                                    <strong>GPT-4:</strong> $5/1M input, $15/1M output tokens<br>
+                                    <strong>GPT-5:</strong> $10/1M input, $30/1M output tokens<br>
+                                    <strong>Enterprise:</strong> Custom pricing
+                                </div>
+                            </td>
+                            <td><span class="badge public">API Access</span></td>
+                            <td>Financial analysis, report generation, complex reasoning</td>
+                            <td><button class="details-btn" data-model="gpt">View Details</button></td>
+                        </tr>
+                        <tr data-model="claude">
+                            <td class="model-name">
+                                <strong>Claude Opus 4</strong>
+                                <span class="badge commercial">Commercial</span>
+                            </td>
+                            <td>Unknown (estimated 500B+)</td>
+                            <td>General + specialized domains</td>
+                            <td>Constitutional AI, Anthropic Architecture</td>
+                            <td>
+                                <div class="pricing-info">
+                                    <strong>Input:</strong> $15/1M tokens<br>
+                                    <strong>Output:</strong> $75/1M tokens<br>
+                                    <strong>Context:</strong> 200K tokens
+                                </div>
+                            </td>
+                            <td><span class="badge public">API Access</span></td>
+                            <td>Long-form financial analysis, compliance, risk assessment</td>
+                            <td><button class="details-btn" data-model="claude">View Details</button></td>
+                        </tr>
+                        <tr data-model="openfinllm">
+                            <td class="model-name">
+                                <strong>Open-FinLLMs</strong>
+                                <span class="badge opensource">Open Source</span>
+                            </td>
+                            <td>8B - 70B</td>
+                            <td>52B+ financial tokens</td>
+                            <td>LLaMA 3 framework</td>
+                            <td>
+                                <div class="pricing-info">
+                                    <strong>Training Cost:</strong> Variable<br>
+                                    <strong>Usage:</strong> Free (open-source)
+                                </div>
+                            </td>
+                            <td><span class="badge public">Public (The FinAI)</span></td>
+                            <td>Financial decision-making, investment analysis</td>
+                            <td><button class="details-btn" data-model="openfinllm">View Details</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Use Cases Section -->
+        <section id="usecases" class="section">
+            <h2>Real-World Use Cases</h2>
+            <div class="usecase-grid">
+                <div class="usecase-card">
+                    <h3>Sentiment Analysis</h3>
+                    <p><strong>Best Models:</strong> FinBERT, FinGPT, FinMA</p>
+                    <p>Analyze financial news, social media, and earnings calls to gauge market sentiment and make informed trading decisions.</p>
+                    <ul>
+                        <li>Real-time news sentiment tracking</li>
+                        <li>Social media sentiment for stocks</li>
+                        <li>Earnings call tone analysis</li>
+                    </ul>
+                </div>
+
+                <div class="usecase-card">
+                    <h3>Risk Assessment & Compliance</h3>
+                    <p><strong>Best Models:</strong> BloombergGPT, Claude Opus 4, GPT-4</p>
+                    <p>Automate regulatory compliance, risk evaluation, and document analysis for financial institutions.</p>
+                    <ul>
+                        <li>AML/KYC document processing</li>
+                        <li>Credit risk evaluation</li>
+                        <li>Regulatory compliance checking</li>
+                    </ul>
+                </div>
+
+                <div class="usecase-card">
+                    <h3>Stock Movement Prediction</h3>
+                    <p><strong>Best Models:</strong> FinGPT, FinMA, Open-FinLLMs</p>
+                    <p>Predict stock price movements using historical data, news, and market indicators.</p>
+                    <ul>
+                        <li>Technical analysis automation</li>
+                        <li>Pattern recognition</li>
+                        <li>Multi-factor prediction models</li>
+                    </ul>
+                </div>
+
+                <div class="usecase-card">
+                    <h3>Financial Report Generation</h3>
+                    <p><strong>Best Models:</strong> GPT-4, Claude Opus 4, BloombergGPT</p>
+                    <p>Automatically generate financial reports, investment recommendations, and market analysis.</p>
+                    <ul>
+                        <li>Earnings report summaries</li>
+                        <li>Investment thesis generation</li>
+                        <li>Market commentary automation</li>
+                    </ul>
+                </div>
+
+                <div class="usecase-card">
+                    <h3>Question Answering</h3>
+                    <p><strong>Best Models:</strong> FinMA, GPT-4, Claude Opus 4</p>
+                    <p>Answer complex financial questions using documents, filings, and market data.</p>
+                    <ul>
+                        <li>SEC filing Q&A</li>
+                        <li>Financial term explanations</li>
+                        <li>Company performance queries</li>
+                    </ul>
+                </div>
+
+                <div class="usecase-card">
+                    <h3>Portfolio Management</h3>
+                    <p><strong>Best Models:</strong> FinGPT, Open-FinLLMs, GPT-5</p>
+                    <p>Optimize investment portfolios using AI-driven analysis and recommendations.</p>
+                    <ul>
+                        <li>Asset allocation optimization</li>
+                        <li>Rebalancing recommendations</li>
+                        <li>Risk-adjusted returns analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Code Examples Section -->
+        <section id="code" class="section">
+            <h2>Code Examples & Implementation</h2>
+
+            <div class="code-example">
+                <h3>1. FinGPT - Sentiment Analysis</h3>
+                <div class="code-header">
+                    <span>Python</span>
+                    <button class="copy-btn" data-code="fingpt-example">Copy</button>
+                </div>
+                <pre><code id="fingpt-example">from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+
+# Load FinGPT model
+model_name = "FinGPT/fingpt-forecaster_dow30_llama2-7b_lora"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name)
+
+# Financial news for sentiment analysis
+news_text = """
+Apple Inc. reported record quarterly earnings,
+beating analyst expectations with revenue growth of 15%.
+"""
+
+# Prepare input
+prompt = f"""Analyze the sentiment of this financial news:
+{news_text}
+
+Sentiment (positive/negative/neutral):"""
+
+inputs = tokenizer(prompt, return_tensors="pt")
+
+# Generate prediction
+with torch.no_grad():
+    outputs = model.generate(
+        **inputs,
+        max_length=200,
+        temperature=0.7,
+        do_sample=True
+    )
+
+sentiment = tokenizer.decode(outputs[0], skip_special_tokens=True)
+print(f"Sentiment Analysis: {sentiment}")
+
+# Example output: "Sentiment Analysis: positive"</code></pre>
+            </div>
+
+            <div class="code-example">
+                <h3>2. FinBERT - News Classification</h3>
+                <div class="code-header">
+                    <span>Python</span>
+                    <button class="copy-btn" data-code="finbert-example">Copy</button>
+                </div>
+                <pre><code id="finbert-example">from transformers import BertTokenizer, BertForSequenceClassification
+from transformers import pipeline
+
+# Load FinBERT for sentiment analysis
+finbert = BertForSequenceClassification.from_pretrained(
+    'yiyanghkust/finbert-tone',
+    num_labels=3
+)
+tokenizer = BertTokenizer.from_pretrained('yiyanghkust/finbert-tone')
+
+# Create pipeline
+nlp = pipeline("sentiment-analysis", model=finbert, tokenizer=tokenizer)
+
+# Financial texts
+texts = [
+    "The company reported strong earnings growth.",
+    "Market volatility increased due to economic uncertainty.",
+    "Revenue remained stable compared to last quarter."
+]
+
+# Analyze sentiment
+results = nlp(texts)
+
+for text, result in zip(texts, results):
+    print(f"Text: {text}")
+    print(f"Sentiment: {result['label']} (confidence: {result['score']:.2f})")
+    print("-" * 50)
+
+# Example output:
+# Sentiment: positive (confidence: 0.92)
+# Sentiment: negative (confidence: 0.87)
+# Sentiment: neutral (confidence: 0.78)</code></pre>
+            </div>
+
+            <div class="code-example">
+                <h3>3. GPT-4 - Financial Analysis API</h3>
+                <div class="code-header">
+                    <span>Python</span>
+                    <button class="copy-btn" data-code="gpt4-example">Copy</button>
+                </div>
+                <pre><code id="gpt4-example">import openai
+from datetime import datetime
+
+openai.api_key = "your-api-key-here"
+
+def analyze_stock(ticker, news_data):
+    """Analyze stock using GPT-4 financial capabilities"""
+
+    prompt = f"""As a financial analyst, analyze {ticker} stock based on:
+
+Recent News:
+{news_data}
+
+Provide:
+1. Sentiment analysis
+2. Key factors affecting the stock
+3. Short-term outlook (1-3 months)
+4. Risk assessment
+
+Format as JSON."""
+
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are an expert financial analyst."},
+            {"role": "user", "content": prompt}
+        ],
+        temperature=0.3,
+        max_tokens=1000
+    )
+
+    return response.choices[0].message.content
+
+# Example usage
+ticker = "AAPL"
+news = """
+- Apple announces new AI chip for iPhone 16
+- Services revenue grows 12% year-over-year
+- China market shows signs of recovery
+"""
+
+analysis = analyze_stock(ticker, news)
+print(f"Analysis for {ticker}:")
+print(analysis)
+
+# Cost estimation:
+# Input tokens: ~150 = $0.00075
+# Output tokens: ~500 = $0.0075
+# Total cost per analysis: ~$0.008</code></pre>
+            </div>
+
+            <div class="code-example">
+                <h3>4. Claude Opus 4 - Compliance Analysis</h3>
+                <div class="code-header">
+                    <span>Python</span>
+                    <button class="copy-btn" data-code="claude-example">Copy</button>
+                </div>
+                <pre><code id="claude-example">import anthropic
+
+client = anthropic.Anthropic(api_key="your-api-key-here")
+
+def analyze_regulatory_compliance(document_text, regulations):
+    """Analyze document for regulatory compliance using Claude"""
+
+    prompt = f"""Analyze this financial document for compliance with {regulations}:
+
+Document:
+{document_text}
+
+Please identify:
+1. Compliance status (compliant/non-compliant/needs review)
+2. Specific regulation matches or violations
+3. Required actions or modifications
+4. Risk level (low/medium/high)
+
+Provide detailed reasoning for each point."""
+
+    message = client.messages.create(
+        model="claude-opus-4-20250514",
+        max_tokens=4096,
+        temperature=0.2,
+        messages=[
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ]
+    )
+
+    return message.content[0].text
+
+# Example usage
+document = """
+Investment Advisory Agreement
+Fee Structure: 2% annual management fee plus 20% performance fee
+Minimum Investment: $100,000
+Lock-up Period: 2 years
+"""
+
+regulations = "SEC Investment Advisers Act, Form ADV requirements"
+compliance_report = analyze_regulatory_compliance(document, regulations)
+
+print("Compliance Analysis:")
+print(compliance_report)
+
+# Cost estimation for 200K token context:
+# Input tokens: ~5,000 = $0.075
+# Output tokens: ~3,000 = $0.225
+# Total cost: ~$0.30 per detailed analysis</code></pre>
+            </div>
+
+            <div class="code-example">
+                <h3>5. FinMA/PIXIU - Multi-Task Financial NLP</h3>
+                <div class="code-header">
+                    <span>Python</span>
+                    <button class="copy-btn" data-code="finma-example">Copy</button>
+                </div>
+                <pre><code id="finma-example">from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
+
+# Load FinMA model
+model_name = "chancefocus/finma-7b-full"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    torch_dtype=torch.float16,
+    device_map="auto"
+)
+
+def financial_qa(question, context):
+    """Answer financial questions using FinMA"""
+
+    prompt = f"""Based on the following context, answer the question:
+
+Context: {context}
+
+Question: {question}
+
+Answer:"""
+
+    inputs = tokenizer(prompt, return_tensors="pt").to(model.device)
+
+    with torch.no_grad():
+        outputs = model.generate(
+            **inputs,
+            max_new_tokens=256,
+            temperature=0.7,
+            do_sample=True,
+            top_p=0.95
+        )
+
+    answer = tokenizer.decode(outputs[0], skip_special_tokens=True)
+    return answer.split("Answer:")[-1].strip()
+
+# Example usage
+context = """
+Tesla Inc. reported Q4 2024 earnings with revenue of $25.2B,
+up 3% year-over-year. Net income reached $2.3B. The company
+delivered 484,507 vehicles in Q4, beating expectations.
+"""
+
+questions = [
+    "What was Tesla's Q4 2024 revenue?",
+    "How many vehicles did Tesla deliver?",
+    "Did Tesla beat earnings expectations?"
+]
+
+for q in questions:
+    answer = financial_qa(q, context)
+    print(f"Q: {q}")
+    print(f"A: {answer}\n")
+
+# Example outputs:
+# Q: What was Tesla's Q4 2024 revenue?
+# A: Tesla's Q4 2024 revenue was $25.2 billion.</code></pre>
+            </div>
+
+            <div class="code-example">
+                <h3>6. Open-FinLLMs - Investment Decision Making</h3>
+                <div class="code-header">
+                    <span>Python</span>
+                    <button class="copy-btn" data-code="openfinllm-example">Copy</button>
+                </div>
+                <pre><code id="openfinllm-example">from transformers import AutoTokenizer, AutoModelForCausalLM
+import json
+
+# Load Open-FinLLM model
+model_name = "TheFinAI/FinLLaMA-3-8B"
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForCausalLM.from_pretrained(model_name)
+
+def investment_analysis(ticker, market_data, portfolio):
+    """Generate investment decision using Open-FinLLM"""
+
+    prompt = f"""You are a financial advisor. Analyze this investment opportunity:
+
+Ticker: {ticker}
+Current Portfolio: {json.dumps(portfolio, indent=2)}
+Market Data: {json.dumps(market_data, indent=2)}
+
+Provide:
+1. Investment recommendation (buy/hold/sell)
+2. Position size suggestion
+3. Risk assessment
+4. Reasoning
+
+Response:"""
+
+    inputs = tokenizer(prompt, return_tensors="pt")
+    outputs = model.generate(
+        **inputs,
+        max_length=500,
+        temperature=0.6,
+        do_sample=True,
+        top_p=0.9
+    )
+
+    return tokenizer.decode(outputs[0], skip_special_tokens=True)
+
+# Example usage
+ticker = "NVDA"
+market_data = {
+    "current_price": 875.50,
+    "52w_high": 974.00,
+    "52w_low": 405.00,
+    "pe_ratio": 68.5,
+    "revenue_growth": "265%",
+    "sector": "Technology - Semiconductors"
+}
+
+portfolio = {
+    "total_value": 100000,
+    "tech_allocation": 0.35,
+    "cash": 15000
+}
+
+recommendation = investment_analysis(ticker, market_data, portfolio)
+print(recommendation)
+
+# Training cost: Variable (using LLaMA 3 base)
+# Usage: Free (open-source)</code></pre>
+            </div>
+
+            <div class="code-example">
+                <h3>7. Real-Time Portfolio Monitoring with Multiple LLMs</h3>
+                <div class="code-header">
+                    <span>Python</span>
+                    <button class="copy-btn" data-code="portfolio-example">Copy</button>
+                </div>
+                <pre><code id="portfolio-example">import asyncio
+from typing import Dict, List
+import aiohttp
+
+class FinancialLLMOrchestrator:
+    """Orchestrate multiple Financial LLMs for comprehensive analysis"""
+
+    def __init__(self):
+        self.models = {
+            'sentiment': 'finbert',
+            'prediction': 'fingpt',
+            'analysis': 'gpt-4',
+            'compliance': 'claude-opus-4'
+        }
+
+    async def analyze_portfolio(self, portfolio: Dict) -> Dict:
+        """Run parallel analysis using multiple LLMs"""
+
+        tasks = [
+            self.sentiment_analysis(portfolio['holdings']),
+            self.price_prediction(portfolio['holdings']),
+            self.risk_assessment(portfolio),
+            self.compliance_check(portfolio['transactions'])
+        ]
+
+        results = await asyncio.gather(*tasks)
+
+        return {
+            'sentiment': results[0],
+            'predictions': results[1],
+            'risk': results[2],
+            'compliance': results[3],
+            'overall_score': self.calculate_score(results)
+        }
+
+    async def sentiment_analysis(self, holdings: List) -> Dict:
+        """Use FinBERT for sentiment analysis"""
+        # Implementation using FinBERT API
+        sentiments = {}
+        for holding in holdings:
+            # Analyze news sentiment for each holding
+            sentiments[holding['ticker']] = {
+                'score': 0.85,  # Example
+                'label': 'positive'
+            }
+        return sentiments
+
+    async def price_prediction(self, holdings: List) -> Dict:
+        """Use FinGPT for price predictions"""
+        predictions = {}
+        for holding in holdings:
+            predictions[holding['ticker']] = {
+                '1d': 2.3,   # % change
+                '1w': 5.7,
+                '1m': 12.4
+            }
+        return predictions
+
+    async def risk_assessment(self, portfolio: Dict) -> Dict:
+        """Use GPT-4 for comprehensive risk analysis"""
+        return {
+            'var_95': 0.045,  # Value at Risk
+            'sharpe_ratio': 1.8,
+            'max_drawdown': 0.12,
+            'concentration_risk': 'medium'
+        }
+
+    async def compliance_check(self, transactions: List) -> Dict:
+        """Use Claude for compliance checking"""
+        return {
+            'status': 'compliant',
+            'flags': [],
+            'recommendations': [
+                'Consider diversification limits',
+                'Review sector concentration'
+            ]
+        }
+
+    def calculate_score(self, results: List) -> float:
+        """Calculate overall portfolio health score"""
+        # Combine all metrics into a single score
+        return 8.5  # Example score out of 10
+
+# Example usage
+async def main():
+    orchestrator = FinancialLLMOrchestrator()
+
+    portfolio = {
+        'holdings': [
+            {'ticker': 'AAPL', 'shares': 100, 'value': 17500},
+            {'ticker': 'MSFT', 'shares': 50, 'value': 19000},
+            {'ticker': 'GOOGL', 'shares': 75, 'value': 10500}
+        ],
+        'transactions': [
+            {'date': '2025-01-15', 'type': 'buy', 'ticker': 'AAPL', 'shares': 10}
+        ]
+    }
+
+    analysis = await orchestrator.analyze_portfolio(portfolio)
+
+    print("Portfolio Analysis Results:")
+    print(json.dumps(analysis, indent=2))
+
+    # Cost breakdown for this analysis:
+    # FinBERT: $0 (open-source)
+    # FinGPT: $0 (open-source)
+    # GPT-4: ~$0.02
+    # Claude: ~$0.15
+    # Total: ~$0.17 per comprehensive analysis
+
+if __name__ == "__main__":
+    asyncio.run(main())</code></pre>
+            </div>
+        </section>
+    </main>
+
+    <!-- Model Details Modal -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>Financial LLMs Explorer 2025 - Data compiled from research papers, official documentation, and industry reports</p>
+            <p>Last Updated: January 2025 | Sources: ArXiv, Bloomberg, OpenAI, Anthropic, AI4Finance</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
